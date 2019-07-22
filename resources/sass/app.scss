@@ -16,7 +16,10 @@
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
 
 .router-link-exact-active{
-  background-color: #007bff;
+  background-color: grey;
   color: #fff !important;
 }
 
+.btn-info{
+    color: white;
+}

@@ -20,7 +20,9 @@ const routes = [
     { path: '/listefournisseurs', component: require('./components/ListeFournisseurs.vue').default },
     { path: '/ajouterfournisseur', component: require('./components/AjouterFournisseur.vue').default },
     { path: '/archivefournisseurs', component: require('./components/ArchiveFournisseurs.vue').default },
-    { path: '/document', component: require('./components/Document.vue').default },
+    { path: '/listedocuments', component: require('./components/ListeDocuments.vue').default },
+    { path: '/ajouterdocument', component: require('./components/AjouterDocument.vue').default },
+    { path: '/archivedocuments', component: require('./components/ArchiveDocuments.vue').default },
     { path: '/calendrier', component: require('./components/Calendrier.vue').default }
 ]
 

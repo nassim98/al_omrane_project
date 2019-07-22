@@ -6,7 +6,7 @@
                     <div class="card-header">Calendrier</div>
 
                     <div class="card-body">
-                        I'm the Calendrier component.
+                        I'm the Calendrier batta component.
                     </div>
                 </div>
             </div>

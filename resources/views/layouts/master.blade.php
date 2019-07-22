@@ -144,13 +144,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <router-link to="/document" class="nav-link">
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
                             <i class="fas fa-file-contract nav-icon"></i>
                             <p>
                                 Gestion Documents
+                                <i class="right fa fa-angle-left"></i>
                             </p>
-                        </router-link>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <router-link to="/listedocuments" class="nav-link">
+                                    <i class="fas fa-list nav-icon"></i>
+                                    <p>
+                                        Liste Documents
+                                    </p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link to="/ajouterdocument" class="nav-link">
+                                    <i class="fas fa-plus-square nav-icon"></i>                                    <p>
+                                        Ajouter Document
+                                    </p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link to="/archivedocuments" class="nav-link">
+                                    <i class="fas fa-archive nav-icon"></i>
+                                    <p>
+                                        Archive Documents
+                                    </p>
+                                </router-link>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <router-link to="/calendrier" class="nav-link">
@@ -160,15 +186,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </p>
                         </router-link>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Simple Link
-                                <span class="right badge badge-danger">New</span>
-                            </p>
-                        </a>
-                    </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
