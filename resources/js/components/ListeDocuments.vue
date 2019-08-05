@@ -3,7 +3,7 @@
         <!-- row -->
         <div class="row mt-5">
             <div class="col-12">
-                <div class="card">
+                <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title">Responsive Hover Table</h3>
 
@@ -39,8 +39,8 @@
                                 <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                                 <td>
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-info"><span>Action</span></button>
-                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                                        <button type="button" class="btn btn-success"><span>Action</span></button>
+                                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                                             <span class="caret"></span>
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
@@ -69,8 +69,8 @@
                                 <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                                 <td>
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                                        <button type="button" class="btn btn-success">Action</button>
+                                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                                             <span class="caret"></span>
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
@@ -100,8 +100,8 @@
                                 <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                                 <td>
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                                        <button type="button" class="btn btn-success">Action</button>
+                                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                                             <span class="caret"></span>
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
@@ -130,8 +130,8 @@
                                 <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                                 <td>
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                                        <button type="button" class="btn btn-success">Action</button>
+                                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                                             <span class="caret"></span>
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
