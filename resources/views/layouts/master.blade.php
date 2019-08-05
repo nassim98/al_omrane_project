@@ -11,7 +11,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <!-- easter egg -->
     <link rel="Shortcut icon" href="/img/favicon.ico" type="image/x-icon"/>
     <title>Al Omrane</title>
 
@@ -28,7 +28,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
-        <!-- SEARCH FORM -->
+        <!-- SEARCH FORM
         <form class="form-inline ml-3">
             <div class="input-group input-group-sm">
                 <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
@@ -39,10 +39,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
             </div>
         </form>
+        -->
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-            <!-- Notifications Dropdown Menu -->
+            <!-- Notifications Dropdown Menu
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="fas fa-bell fa-2x"></i>
@@ -69,6 +70,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
             </li>
+            -->
         </ul>
     </nav>
     <!-- /.navbar -->
@@ -109,6 +111,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </p>
                         </router-link>
                     </li>
+                    <!--
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="fas fa-handshake nav-icon"></i>
@@ -117,6 +120,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <i class="right fa fa-angle-left"></i>
                             </p>
                         </a>
+
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <router-link to="/listefournisseurs" class="nav-link">
@@ -144,40 +148,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-file-contract nav-icon"></i>
+                    -->
+
+                    <li class="nav-item">
+                        <router-link to="/listedocuments" class="nav-link">
+                            <i class="fas fa-list nav-icon"></i>
                             <p>
-                                Gestion Documents
-                                <i class="right fa fa-angle-left"></i>
+                                Liste Documents
                             </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <router-link to="/listedocuments" class="nav-link">
-                                    <i class="fas fa-list nav-icon"></i>
-                                    <p>
-                                        Liste Documents
-                                    </p>
-                                </router-link>
-                            </li>
-                            <li class="nav-item">
-                                <router-link to="/ajouterdocument" class="nav-link">
-                                    <i class="fas fa-plus-square nav-icon"></i>                                    <p>
-                                        Ajouter Document
-                                    </p>
-                                </router-link>
-                            </li>
-                            <li class="nav-item">
-                                <router-link to="/archivedocuments" class="nav-link">
-                                    <i class="fas fa-archive nav-icon"></i>
-                                    <p>
-                                        Archive Documents
-                                    </p>
-                                </router-link>
-                            </li>
-                        </ul>
+                        </router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link to="/ajouterdocument" class="nav-link">
+                            <i class="fas fa-plus-square nav-icon"></i>                                    <p>
+                                Ajouter Document
+                            </p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/archivedocuments" class="nav-link">
+                            <i class="fas fa-archive nav-icon"></i>
+                            <p>
+                                Archive Documents
+                            </p>
+                        </router-link>
+                    </li>
+                    <!--
                     <li class="nav-item">
                         <router-link to="/calendrier" class="nav-link">
                             <i class="fas fa-calendar-alt nav-icon"></i>
@@ -186,6 +182,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </p>
                         </router-link>
                     </li>
+                    -->
 
                 </ul>
             </nav>
@@ -199,6 +196,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Main content -->
         <div class="content">
+            <br/>
+            <br/>
             <div class="container-fluid">
                 <router-view></router-view>
             </div><!-- /.container-fluid -->
@@ -211,10 +210,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <footer class="main-footer">
         <!-- To the right -->
         <div class="float-right d-none d-sm-inline">
-            Anything you want
+
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2019 <a href="https://www.alomrane.gov.ma/">Al Omrane</a>.</strong> All rights reserved.
     </footer>
 </div>
 <!-- ./wrapper -->
