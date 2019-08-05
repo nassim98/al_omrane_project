@@ -3,7 +3,7 @@
         <!-- row -->
         <div class="row mt-5">
             <div class="col-12">
-                <div class="card">
+                <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title">Responsive Hover Table</h3>
 
@@ -38,7 +38,7 @@
                                 <td><span class="tag tag-success">Approved</span></td>
                                 <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                                 <td>
-                                    <button type="button" class="btn btn-info">
+                                    <button type="button" class="btn btn-success">
                                         <i class="fas fa-box-open align-left"></i>
                                         Désarchiver
                                     </button>
@@ -51,7 +51,7 @@
                                 <td><span class="tag tag-warning">Pending</span></td>
                                 <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                                 <td>
-                                    <button type="button" class="btn btn-info">
+                                    <button type="button" class="btn btn-success">
                                         <i class="fas fa-box-open align-left"></i>
                                         Désarchiver
                                     </button>
@@ -64,7 +64,7 @@
                                 <td><span class="tag tag-primary">Approved</span></td>
                                 <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                                 <td>
-                                    <button type="button" class="btn btn-info">
+                                    <button type="button" class="btn btn-success">
                                         <i class="fas fa-box-open align-left"></i>
                                         Désarchiver
                                     </button>
@@ -77,7 +77,7 @@
                                 <td><span class="tag tag-danger">Denied</span></td>
                                 <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                                 <td>
-                                    <button type="button" class="btn btn-info">
+                                    <button type="button" class="btn btn-success">
                                         <i class="fas fa-box-open align-left"></i>
                                         Désarchiver
                                     </button>

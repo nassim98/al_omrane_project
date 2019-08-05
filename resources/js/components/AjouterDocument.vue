@@ -3,43 +3,79 @@
         <!-- row -->
         <div class="row mt-5">
             <div class="col-12">
-                <div class="card card-info">
+                <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title">Quick Example</h3>
+                        <h3 class="card-title">Nouveau Document</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form">
+                    <form @submit.prevent="ajouterDocument">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                <label for="num_ordre">Numero d'Ordre</label>
+                                <input v-model="form.num_ordre" type="number" class="form-control" id="num_ordre" placeholder="Enter le Numero d'Ordre" :class="{ 'is-invalid': form.errors.has('num_ordre') }">
+                                <has-error :form="form" field="num_ordre"></has-error>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <label for="date">Date du Document</label>
+                                <input v-model="form.date" type="date" class="form-control" id="date" placeholder="Entrer la Date du Document" :class="{ 'is-invalid': form.errors.has('date') }">
+                                <has-error :form="form" field="date"></has-error>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputFile">File input</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" id="">Upload</span>
-                                    </div>
-                                </div>
+                                <label for="chef_responsable">Nom du Chef Resposable</label>
+                                <input v-model="form.chef_responsable" type="text" class="form-control" id="chef_responsable" placeholder="Entrer le Nom du Chef Resposable" :class="{ 'is-invalid': form.errors.has('chef_responsable') }">
+                                <has-error :form="form" field="chef_responsable"></has-error>
                             </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            <div class="form-group">
+                                <label for="agence">Agence</label>
+                                <select v-model="form.agence" class="form-control" id="agence" placeholder="Selectionner une Agence" :class="{ 'is-invalid': form.errors.has('agence') }">
+                                    <has-error :form="form" field="agence"></has-error>
+                                    <option>Berkane</option>
+                                    <option>Driouch</option>
+                                    <option>Figuig</option>
+                                    <option>Guercif</option>
+                                    <option>Jerada</option>
+                                    <option>Nador</option>
+                                    <option>Oujda</option>
+                                    <option>Taourirt</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ville">Ville</label>
+                                <select v-model="form.ville" class="form-control" id="ville" placeholder="Selectionner une Ville" :class="{ 'is-invalid': form.errors.has('ville') }">
+                                    <has-error :form="form" field="ville"></has-error>
+                                    <option>Berkane</option>
+                                    <option>Driouch</option>
+                                    <option>Figuig</option>
+                                    <option>Guercif</option>
+                                    <option>Jerada</option>
+                                    <option>Nador</option>
+                                    <option>Oujda</option>
+                                    <option>Taourirt</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="objet">Objet du Document</label>
+                                <input v-model="form.objet" type="text" class="form-control" id="objet" placeholder="Objet du Document" :class="{ 'is-invalid': form.errors.has('objet') }">
+                                <has-error :form="form" field="objet"></has-error>
+                            </div>
+                            <div class="form-group">
+                                <label for="type">Type du Document</label>
+                                <select v-model="form.type" class="form-control" id="type" placeholder="Selectionner le type du Document" :class="{ 'is-invalid': form.errors.has('type') }">
+                                    <has-error :form="form" field="type"></has-error>
+                                    <option>Facture</option>
+                                    <option>type_1</option>
+                                    <option>type_2</option>
+                                </select>
                             </div>
                         </div>
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-info float-right">Submit</button>
+                            <div class="float-right">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-success">Ajouter</button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -52,6 +88,24 @@
 
 <script>
     export default {
+        data () {
+            return {
+                form: new Form({
+                    num_ordre: '',
+                    date: '',
+                    chef_responsable: '',
+                    agence: '',
+                    ville: '',
+                    objet: '',
+                    type: ''
+                })
+            }
+        },
+        methods:{
+            ajouterDocument(){
+                this.form.post('api/document')
+            }
+        },
         mounted() {
             console.log('Component mounted.')
         }
