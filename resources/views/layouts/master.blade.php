@@ -78,7 +78,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="/home" class="brand-link">
+        <a href="/accueil" class="brand-link">
             <img src="/img/logo-omrane.png" alt="Al Omrane Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <span class="brand-text font-weight-light">Al Omrane</span>
