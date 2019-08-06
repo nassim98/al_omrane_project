@@ -103,7 +103,22 @@
         },
         methods:{
             ajouterDocument(){
-                this.form.post('api/document')
+                this.form.post('api/document').then(() => {
+                    toast.fire({
+                        type: 'success',
+                        title: 'document creer avec succès !!'
+                    })
+                }).then(()=>{
+                    this.form.num_ordre='';
+                    this.form.date='';
+                    this.form.chef_responsable='';
+                    this.form.agence='';
+                    this.form.ville='';
+                    this.form.objet= '';
+                    this.form.type='';
+                });
+
+
             }
         },
         mounted() {
