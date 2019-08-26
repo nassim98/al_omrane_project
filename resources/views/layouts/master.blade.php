@@ -43,34 +43,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-            <!-- Notifications Dropdown Menu
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="fas fa-bell fa-2x"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}" title="Se déconnecter"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="nav-icon fa fa-power-off fa-2x logout-red"></i>
                 </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-header">15 Notifications</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> 4 new messages
-                        <span class="float-right text-muted text-sm">3 mins</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-users mr-2"></i> 8 friend requests
-                        <span class="float-right text-muted text-sm">12 hours</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> 3 new reports
-                        <span class="float-right text-muted text-sm">2 days</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                </div>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </li>
-            -->
+
         </ul>
     </nav>
     <!-- /.navbar -->
@@ -181,6 +164,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 Calendrier
                             </p>
                         </router-link>
+                    </li>
+                    -->
+
+                    <!--
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="nav-icon fa fa-power-off"></i>
+                            <p> {{ __('Se déconnecter') }} </p>
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </li>
                     -->
 
