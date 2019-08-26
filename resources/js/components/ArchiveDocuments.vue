@@ -5,7 +5,7 @@
             <div class="col-12">
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title">Responsive Hover Table</h3>
+                        <h3 class="card-title">Archive des Documents</h3>
 
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
@@ -22,62 +22,27 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>User</th>
+                                <th>Numero d'ordre</th>
                                 <th>Date</th>
-                                <th>Status</th>
-                                <th>Reason</th>
+                                <th>Chef Responsable</th>
+                                <th>Agence</th>
+                                <th>Ville</th>
+                                <th>Objet</th>
+                                <th>Type</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>183</td>
-                                <td>John Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-success">Approved</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                            <tr v-for="document in archiveDocuments" :key="document.id">
+                                <td>{{document.num_ordre}}</td>
+                                <td>{{document.date}}</td>
+                                <td>{{document.chef_responsable}}</td>
+                                <td>{{document.agence}}</td>
+                                <td>{{document.ville}}</td>
+                                <td>{{document.objet}}</td>
+                                <td>{{document.type}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-success">
-                                        <i class="fas fa-box-open align-left"></i>
-                                        Désarchiver
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>219</td>
-                                <td>Alexander Pierce</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-warning">Pending</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">
-                                        <i class="fas fa-box-open align-left"></i>
-                                        Désarchiver
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>657</td>
-                                <td>Bob Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-primary">Approved</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">
-                                        <i class="fas fa-box-open align-left"></i>
-                                        Désarchiver
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>175</td>
-                                <td>Mike Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="tag tag-danger">Denied</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">
+                                    <button type="button" class="btn btn-success" @click="desarchiverDocument(document.id)">
                                         <i class="fas fa-box-open align-left"></i>
                                         Désarchiver
                                     </button>
@@ -108,8 +73,32 @@
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
+        data(){
+            return {
+                archiveDocuments:{}
+            }
+        },
+        methods:{
+            desarchiverDocument(id){
+                swal.fire({
+                    title: 'Voulez-vous desarchiver ce document ?',
+                    type: 'question',
+                    confirmButtonText:  'Oui',
+                    cancelButtonText:  'Non',
+                    showCancelButton: true
+                }).then((result)=>{
+                    if (result.value){
+                        axios.get("api/document/desarchiver/"+id);
+                        this.chargerDocumentsArchivee();
+                    }
+                })
+            },
+            chargerDocumentsArchivee(){
+                axios.get("api/document/archive").then(({data}) => (this.archiveDocuments = data.data));
+            }
+        },
+        created() {
+            this.chargerDocumentsArchivee();
         }
     }
 </script>

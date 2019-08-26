@@ -15,9 +15,43 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        return Document::latest()->paginate(10);
+        return Document::latest()->where(function ($query){
+            $query->where("archived","=",0);
+        })->paginate(10);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getArchive(){
+        return Document::latest()->where(function ($query){
+            $query->where("archived","=",1);
+        })->paginate(10);
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function archiverDocument($id){
+        $document=Document::find($id);
+        $document->archived=1;
+        $document->update();
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function desarchiverDocument($id){
+        $document=Document::find($id);
+        $document->archived=0;
+        $document->update();
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -27,7 +61,7 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         $this -> validate($request,[
-            'num_ordre' => 'required|numeric|unique:documents',
+            'num_ordre' => 'required|unique:documents',
             'date' => 'required',
             'chef_responsable' => 'required',
             'agence' => 'required',
@@ -45,6 +79,9 @@ class DocumentController extends Controller
             'ville' => $request['ville'],
             'objet' => $request['objet'],
             'type' => $request['type'],
+            'note' => $request['note'],
+            'fournisseur' => $request['fournisseur'],
+            'scenario' => $request['scenario']
         ]);
     }
 
