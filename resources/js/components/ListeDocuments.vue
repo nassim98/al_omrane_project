@@ -43,25 +43,17 @@
                                 <td>{{document.type}}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-success"><span>Action</span></button>
-                                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <div class="dropdown-menu" role="menu">
-                                            <a class="dropdown-item" href="#">
-                                                <i class="fas fa-list align-left"></i>
-                                                Details
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                <i class="fas fa-plus-square align-left"></i>
-                                                Modifier
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                <i class="fas fa-archive nav-icon"></i>
-                                                Archiver
-                                            </a>
-                                        </div>
+                                        <a class="details" href="#" title="détails">
+                                            <i class="fa fa-list text-success mr-2"></i>
+                                        </a>
+                                        <span>/</span>
+                                        <a class="modify" href="#" title="modifier">
+                                            <i class="fa fa-edit mr-2 ml-2"></i>
+                                        </a>
+                                        <span>/</span>
+                                        <a class="archive" href="#" @click="archiverDocument(document.id)" title="archiver">
+                                            <i class="fa fa-archive text-danger ml-2"></i>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
@@ -96,6 +88,20 @@
             }
         },
         methods:{
+            archiverDocument(id){
+                swal.fire({
+                    title: 'Voulez-vous archiver ce document ?',
+                    type: 'question',
+                    confirmButtonText:  'Oui',
+                    cancelButtonText:  'Non',
+                    showCancelButton: true
+                }).then((result)=>{
+                    if (result.value){
+                        axios.get("api/document/archiver/"+id);
+                        this.chargerDocuments();
+                    }
+                })
+            },
             chargerDocuments(){
                 axios.get("api/document").then(({data}) => (this.documents = data.data));
             }

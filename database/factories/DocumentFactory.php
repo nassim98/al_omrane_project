@@ -19,12 +19,12 @@ use Faker\Generator as Faker;
 $factory->define(Document::class, function (Faker $faker) {
     $a = $faker->randomElement(['Oujda', 'Berkane', 'Nador', 'Driouch', 'Guercif', 'Taourirt', 'Jerada', 'Figuig']);
     return [
-        'num_ordre' => $faker->unique()->randomNumber(3),
+        'num_ordre' => $a.'_2019_'.$faker->unique()->randomNumber(3),
         'date' => $faker->dateTimeBetween('-10 years'),
         'chef_responsable' => $faker->firstName(),
         'agence' => $a,
         'ville' => $a,
-        'objet' => Str::random(50),
+        'objet' => Str::random(20),
         'type' => 'facture',
     ];
 });

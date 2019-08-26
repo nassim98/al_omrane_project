@@ -17,6 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('api')->get('document/archive','API\DocumentController@getArchive');
+Route::middleware('api')->get('document/archiver/{id}','API\DocumentController@archiverDocument');
+Route::middleware('api')->get('document/desarchiver/{id}','API\DocumentController@desarchiverDocument');
+
 Route::apiResources([
     'document' => 'API\DocumentController'
 ]);
