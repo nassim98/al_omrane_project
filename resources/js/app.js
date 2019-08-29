@@ -43,7 +43,8 @@ const routes = [
     { path: '/listedocuments', component: require('./components/ListeDocuments.vue').default },
     { path: '/ajouterdocument', component: require('./components/AjouterDocument.vue').default },
     { path: '/archivedocuments', component: require('./components/ArchiveDocuments.vue').default },
-    { path: '/calendrier', component: require('./components/Calendrier.vue').default }
+    { path: '/calendrier', component: require('./components/Calendrier.vue').default },
+    { path: '/ajouterscenario', component: require('./components/AjouterScenario.vue').default }
 ]
 
 const router = new VueRouter({

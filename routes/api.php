@@ -24,3 +24,15 @@ Route::middleware('api')->get('document/desarchiver/{id}','API\DocumentControlle
 Route::apiResources([
     'document' => 'API\DocumentController'
 ]);
+
+Route::apiResources([
+    'document' => 'API\DocumentController'
+]);
+
+Route::apiResources([
+    'etape' => 'API\EtapeController'
+]);
+
+Route::apiResources([
+    'scenario' => 'API\ScenarioController'
+]);

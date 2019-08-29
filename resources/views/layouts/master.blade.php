@@ -143,7 +143,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
                     <li class="nav-item">
                         <router-link to="/ajouterdocument" class="nav-link">
-                            <i class="fas fa-plus-square nav-icon"></i>                                    <p>
+                            <i class="fas fa-plus-square nav-icon"></i>
+                            <p>
                                 Ajouter Document
                             </p>
                         </router-link>
@@ -153,6 +154,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <i class="fas fa-archive nav-icon"></i>
                             <p>
                                 Archive Documents
+                            </p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/ajouterscenario" class="nav-link">
+                            <i class="fas fa-plus-square nav-icon"></i>
+                            <p>
+                                Nouveau Scenario
                             </p>
                         </router-link>
                     </li>
