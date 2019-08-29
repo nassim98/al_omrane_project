@@ -98,7 +98,7 @@
                         <div class="card-footer">
                             <div class="float-right">
                                 <button type="button" @click="annulerCreation" class="btn btn-danger">Annuler</button>
-                                <button type="submit" class="btn btn-success">Ajouter</button>
+                                <button type="submit" class="btn btn-success">Ajouter xxxxx</button>
                             </div>
                         </div>
                     </form>
