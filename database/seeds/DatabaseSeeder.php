@@ -62,6 +62,28 @@ class DatabaseSeeder extends Seeder
                 'description'=>'Bureau d\'Ordre'
             ],
         ]);
+        DB::table('scenarios')->insert([
+            [
+                'nom'=>'Scen_Fac',
+                'suivi'=>'11:1:10:6:9',
+                'delais'=>'3:3:3:3:3'
+            ],
+            [
+                'nom'=>'Scen_1',
+                'suivi'=>'1:2:3:4:5',
+                'delais'=>'2:2:2:2:2'
+            ],
+            [
+                'nom'=>'Scen_2',
+                'suivi'=>'2:3:4:5:6',
+                'delais'=>'2:2:3:3:2'
+            ],
+            [
+                'nom'=>'Scen_3',
+                'suivi'=>'10:9:8:7:6',
+                'delais'=>'2:3:4:3:2'
+            ],
+        ]);
 
         factory(App\Document::class, 10)->create();
     }

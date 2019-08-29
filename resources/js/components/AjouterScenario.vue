@@ -110,7 +110,7 @@
                 var last_suivi_string=this.form.suivi_string;
                 var last_delais_string=this.form.delais_string;
                 for (var i = 0; i < this.form.suivi.length; i++) {
-                    this.form.suivi_string+=(i!=0?':':'')+this.etapes[this.form.suivi[i].etape-1].libelle;
+                    this.form.suivi_string+=(i!=0?':':'')+this.etapes[this.form.suivi[i].etape-1].id;
                     this.form.delais_string+=(i!=0?':':'')+this.form.suivi[i].delai;
                 };
                 this.form.post('api/scenario').then(() => {
@@ -121,7 +121,10 @@
                     this.form.nom='';
                     this.form.suivi_string='';
                     this.form.delais_string='';
-                    this.form.suivi=[{'id':1, 'etape':1, 'delai':1}, {'id':2, 'etape':2, 'delai':1}];
+                    this.form.suivi=[
+                        {'id':1, 'etape':1, 'delai':1},
+                        {'id':2, 'etape':2, 'delai':1}
+                        ];
                 }).catch(() => {
                     this.form.suivi_string=last_suivi_string;
                     this.form.delais_string=last_delais_string;
