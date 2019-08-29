@@ -82,8 +82,7 @@
                                         <label for="scenario">Appliquer</label>
                                         <select v-model="form.scenario" class="form-control" id="scenario" :class="{ 'is-invalid': form.errors.has('scenario') }">
                                             <has-error :form="form" field="type"></has-error>
-                                            <option>scenario_1</option>
-                                            <option>scenario_2</option>
+                                            <option v-for="scenario in scenarios" :value="scenario.id">{{scenario.nom}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -98,7 +97,7 @@
                         <div class="card-footer">
                             <div class="float-right">
                                 <button type="button" @click="annulerCreation" class="btn btn-danger">Annuler</button>
-                                <button type="submit" class="btn btn-success">Ajouter xxxxx</button>
+                                <button type="submit" class="btn btn-success">Ajouter</button>
                             </div>
                         </div>
                     </form>
@@ -127,7 +126,8 @@
                     type: '',
                     scenario:'',
                     note:''
-                })
+                }),
+                scenarios:{},
             }
         },
         methods:{
@@ -176,10 +176,13 @@
                         this.form.note='';
                     }
                 })
+            },
+            chargerScenarios(){
+                axios.get("api/scenario").then(({data}) => (this.scenarios = data));
             }
         },
-        mounted() {
-            console.log('Component mounted.')
+        created() {
+            this.chargerScenarios();
         }
     }
 </script>

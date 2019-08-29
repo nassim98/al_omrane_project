@@ -15,7 +15,7 @@ class ScenarioController extends Controller
      */
     public function index()
     {
-        //
+        return Scenario::all();
     }
 
     /**

@@ -24,7 +24,8 @@ class CreateDocumentsTable extends Migration
             $table->string('type');
             $table->string('note')->nullable();
             $table->string('fournisseur')->nullable();
-            $table->string('scenario')->nullable();
+            $table->integer('scenario')->nullable();
+            $table->foreign('scenario')->references('id')->on('scenarios')->onDelete('no action');
             $table->boolean('archived')->default(0);
             $table->timestamps();
         });
