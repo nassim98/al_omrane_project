@@ -27,7 +27,10 @@ class SuiviController extends Controller
     public function store(Request $request)
     {
         return Suivi::create([
-            'num_ordre' => $request['num_ordre'],
+            'id_document' => $request['id_document'],
+            'id_scenario' => $request['id_scenario'],
+            'id_etape' => $request['id_etape'],
+            'date' => $request['date'],
         ]);
     }
 
