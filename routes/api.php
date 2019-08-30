@@ -36,3 +36,7 @@ Route::apiResources([
 Route::apiResources([
     'scenario' => 'API\ScenarioController'
 ]);
+
+Route::apiResources([
+    'suivi' => 'API\SuiviController'
+]);

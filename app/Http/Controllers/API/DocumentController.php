@@ -68,6 +68,7 @@ class DocumentController extends Controller
             'ville' => 'required',
             'objet' => 'required',
             'type' => 'required',
+            'scenario' => 'required',
         ]);
 
 

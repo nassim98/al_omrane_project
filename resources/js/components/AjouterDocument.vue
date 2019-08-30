@@ -51,6 +51,14 @@
                                         <label for="fournisseur">Fournisseur</label>
                                         <input v-model="form.fournisseur" type="text" class="form-control" id="fournisseur" placeholder="Entrer le Nom du Fournisseur">
                                     </div>
+                                    <div class="form-group" v-if="form.scenario">
+                                        <div class="alert bg-warning disabled color-palette">
+                                            <i class="icon fas fa-exclamation-triangle fa-2x"></i><br>
+                                            Vous choisissez le Scenario {{this.scenarios[this.form.scenario].nom}} !<br>
+                                            Ce Document doit passer du <span v-for="(etape,index) in scenarios[form.scenario].suivi" :title="etape.description">{{etape.libelle}}<span v-if="index<scenarios[form.scenario].suivi.length-1">-></span></span>.<br>
+                                            Il faut passer ce Document au <span :title="scenarios[form.scenario].suivi[1].description">{{this.scenarios[form.scenario].suivi[1].libelle}}</span> dans <span>{{this.scenarios[form.scenario].delais[0]}}</span> Jours.
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -81,8 +89,8 @@
                                     <div class="form-group">
                                         <label for="scenario">Appliquer</label>
                                         <select v-model="form.scenario" class="form-control" id="scenario" :class="{ 'is-invalid': form.errors.has('scenario') }">
-                                            <has-error :form="form" field="type"></has-error>
-                                            <option v-for="scenario in scenarios" :value="scenario.id">{{scenario.nom}}</option>
+                                            <has-error :form="form" field="scenario"></has-error>
+                                            <option v-for="(scenario,index) in scenarios" :value="index+''">{{scenario.nom}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -125,14 +133,19 @@
                     objet: '',
                     type: '',
                     scenario:'',
-                    note:''
+                    note:'',
+                    id_etape:''
                 }),
                 scenarios:{},
+                etapes:{}
             }
         },
         methods:{
             ajouterDocument(){
                 this.form.num_ordre=this.form.agence+'_'+this.form.annee+'_'+this.form.numero;
+                var scenario_index=this.form.scenario;
+                this.form.scenario=this.scenarios[this.form.scenario].id;
+                this.form.id_etape=this.scenarios[scenario_index].suivi[0].id;
                 this.form.post('api/document').then(() => {
                     toast.fire({
                         type: 'success',
@@ -148,12 +161,14 @@
                     this.form.type='';
                     this.form.scenario='';
                     this.form.note='';
+                    this.form.id_etape='';
                 }).catch(() => {
+                    this.form.scenario=scenario_index;
                     toast.fire({
                         type: 'error',
                         title: 'verifier les donnees que vous avez saisit !!!'
                     })
-                })
+                });
             },
             annulerCreation(){
                 swal.fire({
@@ -178,10 +193,24 @@
                 })
             },
             chargerScenarios(){
-                axios.get("api/scenario").then(({data}) => (this.scenarios = data));
-            }
+                axios.get("api/scenario").then(({data}) => {
+                    this.scenarios = data;
+                    for (var i = 0; i < this.scenarios.length; i++) {
+                        let id_etapes=this.scenarios[i].suivi.split(':');
+                        this.scenarios[i].suivi=[];
+                        for (var j = 0; j < id_etapes.length; j++) {
+                            this.scenarios[i].suivi.push(this.etapes.find(etape => etape.id === parseInt(id_etapes[j])));
+                        }
+                        this.scenarios[i].delais=this.scenarios[i].delais.split(':');
+                    }
+                });
+            },
+            chargerEtapes(){
+                axios.get("api/etape").then(({data}) => (this.etapes = data));
+            },
         },
         created() {
+            this.chargerEtapes();
             this.chargerScenarios();
         }
     }
