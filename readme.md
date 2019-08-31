@@ -1,4 +1,4 @@
-<p align="center"><img src="public\img\logo-omrane.png"></p>
+<p align="center"><img src="public/img/logo-omrane.png"></p>
 
 
 ## Configuration
