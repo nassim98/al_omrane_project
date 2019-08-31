@@ -21,7 +21,7 @@ class CreateSuivisTable extends Migration
             $table->foreign('id_scenario')->references('id')->on('scenarios')->onDelete('no action');
             $table->integer('id_etape');
             $table->foreign('id_etape')->references('id')->on('etapes')->onDelete('no action');
-            $table->date('date');
+            $table->dateTime('date');
             $table->timestamps();
         });
     }

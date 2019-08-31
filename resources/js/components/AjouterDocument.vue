@@ -64,7 +64,6 @@
                                     <div class="form-group">
                                         <label for="num_ordre">Numero d'Ordre</label>
                                         <div class="input-group">
-                                            <input v-model="form.agence" type="text" class="col-3 mr-1" placeholder="Agence"><strong class="mt-2">/</strong>
                                             <input v-model="form.annee" type="text" class="col-3 ml-1 mr-1" placeholder="Annee"><strong class="mt-2">/</strong>
                                             <input v-model="form.numero" type="text" class="col-3 ml-1 " placeholder="Numero">
                                             <input v-model="form.num_ordre" type="hidden" class="form-control" id="num_ordre" placeholder="Enter le Numero d'Ordre" :class="{ 'is-invalid': form.errors.has('num_ordre') }"  >
@@ -134,23 +133,21 @@
                     type: '',
                     scenario:'',
                     note:'',
-                    id_etape:''
+                    id_etape:'',
+                    id_scenario:''
                 }),
                 scenarios:{},
-                etapes:{}
+                etapes:{},
+                id_document:''
             }
         },
         methods:{
             ajouterDocument(){
-                this.form.num_ordre=this.form.agence+'_'+this.form.annee+'_'+this.form.numero;
-                var scenario_index=this.form.scenario;
-                this.form.scenario=this.scenarios[this.form.scenario].id;
-                this.form.id_etape=this.scenarios[scenario_index].suivi[0].id;
-                this.form.post('api/document').then(() => {
-                    toast.fire({
-                        type: 'success',
-                        title: 'document creer avec succès !!'
-                    });
+                this.form.num_ordre=this.form.annee+'_'+this.form.numero;
+                this.form.id_scenario=this.scenarios[this.form.scenario].id;
+                this.form.id_etape=this.scenarios[this.form.id_scenario].suivi[0].id;
+                axios.post('api/document', this.form).then((response) => {
+                    this.id_document=response.data.id;
                     this.form.agence='';
                     this.form.ville='';
                     this.form.date='';
@@ -161,9 +158,24 @@
                     this.form.type='';
                     this.form.scenario='';
                     this.form.note='';
-                    this.form.id_etape='';
+                    axios.post('api/suivi',{
+                        'id_document' : this.id_document,
+                        'id_scenario' : this.form.id_scenario,
+                        'id_etape' : this.form.id_etape,
+                        'date': new Date().toISOString().slice(0,10)+' '+new Date().toISOString().slice(11,19),
+                    }).then(()=>{
+                            toast.fire({
+                                type: 'success',
+                                title: 'document creer avec succès !!'
+                            });
+                        }
+                    ).catch(()=>{
+                        toast.fire({
+                            type: 'error',
+                            title: 'erreur dans la saisit du suivi !!!'
+                        })
+                    });
                 }).catch(() => {
-                    this.form.scenario=scenario_index;
                     toast.fire({
                         type: 'error',
                         title: 'verifier les donnees que vous avez saisit !!!'
